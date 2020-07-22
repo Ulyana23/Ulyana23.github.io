@@ -1769,6 +1769,15 @@ hr {
     .intro_subtitle {
         font-size: 30px;
     }
+
+	.header.fixed {
+		padding: 0;
+	}
+
+	.header_logo {
+		font-size: 35px;
+		cursor: pointer;
+	}
     
     /* Section */
     .section_header {
@@ -1982,14 +1991,6 @@ hr {
         bottom: 1px;
     }
 
-	.header.fixed {
-		padding: 0;
-	}
-
-    .header_logo {
-        font-size: 35px;
-		cursor: pointer;
-    }
     
     /* Intro */
     .intro_title {
