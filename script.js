@@ -16,8 +16,7 @@ $(function () {
         blogTop = $("#blog").offset().top,
         blogBottom = blogTop + $("#blog").innerHeight(),
 
-        footerTop = $("#footer").offset().top,
-        footerBottom = footerTop + $("#footer").innerHeight();
+        footerTop = $("#footer").offset().top;
 
     /* Fixed Header */
     checkScroll(scrollOffset);
@@ -42,7 +41,6 @@ $(function () {
         blogBottom = blogTop + $("#blog").innerHeight();
 
         footerTop = $("#footer").offset().top;
-        footerBottom = footerTop + $("#footer").innerHeight();
 
         checkScroll(scrollOffset);
 
@@ -52,10 +50,10 @@ $(function () {
         checkScrollServices(scrollOffset);
         checkScrollWork(scrollOffset);
 
-        if($(window).scrollTop()+$(window).height()>=$(document).height()){ //проверяем, прокрутил ли пользователь в конец страницы
+        if($(window).scrollTop()+$(window).height()>=$(document).height() - 10) {
+            //alert("hi");
             $('[data-scroll = "#footer"]').addClass("active");
         }
-
         else {
             $('[data-scroll = "#footer"]').removeClass("active");
         }
@@ -113,7 +111,7 @@ $(function () {
     }
 
     function checkScrollFooter(scrollOffset) {
-        if( scrollOffset <= footerBottom && scrollOffset >= footerTop ) {
+        if( scrollOffset >= footerTop ) {
             $('[data-scroll = "#footer"]').addClass("active");
         }
 
