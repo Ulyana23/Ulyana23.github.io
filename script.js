@@ -1,3 +1,4 @@
+
 $(function () {
     var header = $("#header"),
         introH = $("#intro").innerHeight(),
@@ -42,24 +43,13 @@ $(function () {
 
         footerTop = $("#footer").offset().top;
 
-        checkScroll(scrollOffset);
-
-        checkScrollAbout(scrollOffset);
-        checkScrollBlog(scrollOffset);
-        checkScrollFooter(scrollOffset);
-        checkScrollServices(scrollOffset);
-        checkScrollWork(scrollOffset);
-
-        if($(window).scrollTop()+$(window).height()>=$(document).height() - 10) {
-            //alert("hi");
-            $('[data-scroll = "#footer"]').addClass("active");
-        }
-        else {
-            $('[data-scroll = "#footer"]').removeClass("active");
-        }
+        checkAllScrolls();
 
     });
 
+    //############## CHECK SCROLL ###################
+
+    /* Scroll for navbar */
     function checkScroll(scrollOffset) {
         if( scrollOffset >= introH ) {
             header.addClass("fixed");
@@ -69,7 +59,7 @@ $(function () {
             header.removeClass("fixed");
         }
     }
-
+    /* About scroll */
     function checkScrollAbout(scrollOffset) {
         if( scrollOffset <= aboutBottom && scrollOffset >= aboutTop ) {
             $('[data-scroll = "#about"]').addClass("active");
@@ -80,6 +70,7 @@ $(function () {
         }
     }
 
+    /* Services scroll */
     function checkScrollServices(scrollOffset) {
         if( scrollOffset <= servicesBottom && scrollOffset >= servicesTop ) {
             $('[data-scroll = "#services"]').addClass("active");
@@ -90,6 +81,7 @@ $(function () {
         }
     }
 
+    /* Work scroll */
     function checkScrollWork(scrollOffset) {
         if( scrollOffset <= workBottom && scrollOffset >= workTop ) {
             $('[data-scroll = "#work"]').addClass("active");
@@ -100,6 +92,7 @@ $(function () {
         }
     }
 
+    /* Blog scroll */
     function checkScrollBlog(scrollOffset) {
         if( scrollOffset <= blogBottom && scrollOffset >= blogTop ) {
             $('[data-scroll = "#blog"]').addClass("active");
@@ -110,8 +103,14 @@ $(function () {
         }
     }
 
+    /* Footer scroll */
     function checkScrollFooter(scrollOffset) {
-        if( scrollOffset >= footerTop ) {
+        if( scrollOffset >= footerTop) {
+            $('[data-scroll = "#footer"]').addClass("active");
+        }
+
+        if($(window).scrollTop()+$(window).height()>=$(document).height() - 150) {
+            //alert("hi");
             $('[data-scroll = "#footer"]').addClass("active");
         }
 
@@ -120,12 +119,23 @@ $(function () {
         }
     }
 
+    /* All scrolls */
+    function checkAllScrolls() {
+        checkScroll(scrollOffset);
+        checkScrollAbout(scrollOffset);
+        checkScrollBlog(scrollOffset);
+        checkScrollFooter(scrollOffset);
+        checkScrollServices(scrollOffset);
+        checkScrollWork(scrollOffset);
+    }
+    //##############################################################################################################################################################################################
+
     /* Smooth Scroll */
     $("[data-scroll]").click(function (event) {
         event.preventDefault(); //отменяем стандартное поведение ссылки
 
         var blockId = $(this).data("scroll"),
-            blockOffset = $(blockId).offset().top - headerH + 10;
+            blockOffset = $(blockId).offset().top - headerH + 30;
 
         $(".nav_link").removeClass("active");
         $(this).addClass("active");
@@ -140,6 +150,7 @@ $(function () {
     /* Menu nav toggle */
     $("#nav-toggle").click(function () {
         $(this).toggleClass("active"); //убирает и добавляет класс
+
         $("#nav").toggleClass("active");
         $("#header").toggleClass("active");
     });

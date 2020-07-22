@@ -1981,9 +1981,13 @@ hr {
     .slider {
         bottom: 1px;
     }
-    
+
+	.header.fixed {
+		padding: 0;
+	}
+
     .header_logo {
-        font-size: 40px;
+        font-size: 35px;
 		cursor: pointer;
     }
     
@@ -2011,15 +2015,15 @@ hr {
     }
     
     .section_subtitle {
-        font-size: 13px;
+        font-size: 23px;
     }
     
     .section_title {
-        font-size: 16px;
+        font-size: 25px;
     } 
     
     .section_text {
-        font-size: 10px;
+        font-size: 14px;
     }
     
     .section_title:after {
